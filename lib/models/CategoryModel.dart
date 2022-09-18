@@ -1,0 +1,55 @@
+class Category {
+  late List<Categories> _categories;
+
+  List<Categories> get categories => _categories;
+
+  Category({categories}) {
+    this._categories = categories;
+  }
+
+  Category.fromJson(Map<String, dynamic> json) {
+    if (json['categories'] != null) {
+      _categories = <Categories>[];
+      json['categories'].forEach((v) {
+        _categories.add(Categories.fromJson(v));
+      });
+    }
+  }
+
+/*Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.categories != null) {
+      data['categories'] = this.categories!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }*/
+}
+
+class Categories {
+  String? idCategory;
+  String? strCategory;
+  String? strCategoryThumb;
+  String? strCategoryDescription;
+
+  Categories(
+      {this.idCategory,
+      this.strCategory,
+      this.strCategoryThumb,
+      this.strCategoryDescription});
+
+  Categories.fromJson(Map<String, dynamic> json) {
+    idCategory = json['idCategory'];
+    strCategory = json['strCategory'];
+    strCategoryThumb = json['strCategoryThumb'];
+    strCategoryDescription = json['strCategoryDescription'];
+  }
+/*
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['idCategory'] = this.idCategory;
+    data['strCategory'] = this.strCategory;
+    data['strCategoryThumb'] = this.strCategoryThumb;
+    data['strCategoryDescription'] = this.strCategoryDescription;
+    return data;
+  }*/
+}
